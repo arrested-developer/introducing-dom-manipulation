@@ -70,3 +70,6 @@ section {
   background: blue;
   color: white;
 }
+
+.bigBorders {
+  border: 15px solid black;
