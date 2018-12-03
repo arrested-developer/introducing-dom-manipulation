@@ -1,6 +1,8 @@
 # introducing-dom-manipulation
 An intro to DOM manipulation with vanilla JS
 
+![](http://i.giphy.com/90F8aUepslB84.gif)
+
 ## Tutorial
 
 ### Step 1 - The DOM
