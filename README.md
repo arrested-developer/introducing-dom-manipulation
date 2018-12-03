@@ -71,7 +71,27 @@ To add the yellow class, we can write:
 * What now would be returned by `document.querySelectorAll('yellow')` ?
 * How would you change the rectangle to appear blue by adding and removing classes?
 
-## Step 5 - Directly changing CSS properties
+## Step 5 - Add event listeners
+
+To further embed the fun of Javascript interactivity into the DOM, we can add event listeners to elements. There are many different events you can listen for, but some of the most often used are `click`, `onmouseover`, `onload`. They all happen at different times, you can read more [here](https://www.w3schools.com/js/js_htmldom_eventlistener.asp)
+
+We're going to add a click event listener to the rectangle.
+
+Start by creating a variable to store the rectangle DOM node
+
+We're going to make a new function that changes the class of the target that is clicked on:
+
+```
+function changeClass(event) {
+event.target.classList.toggle('bigBorders');
+}
+```
+
+Now we're going to add our new function to an event listener by typing:
+
+`rectangle.addEventListener('click', changeClass)`
+
+## Step 6 - Directly changing CSS properties
 
 [CSS properties in Javascript](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference) are often written slightly differently than in CSS.
 
