@@ -63,12 +63,12 @@ Let's start by assigning the circle to a variable
 Now we can use methods on the object `circle` to add and remove classes.
 
 To remove the `blue` class from the section, we can write:
-`circle.removeClass('blue')`
+`circle.classList.remove('blue')`
 
 Take a peek and see how it looks.
 
 To add the yellow class, we can write:
-`circle.addClass('yellow')`
+`circle.classList.add('yellow')`
 
 * What now would be returned by `document.querySelectorAll('yellow')` ?
 * How would you change the rectangle to appear blue by adding and removing classes?
