@@ -25,7 +25,9 @@ If we type
 typeof document
 ```
 
-We should see that it is an object. The DOM is how Javascript interacts with a web page, using a Javascript object that represents the structure of the HTML page.
+We should see that it is an object. The DOM is how Javascript interacts with a web page, using a Javascript object that initially represents the structure of the HTML page.
+
+> Note: On Chrome, you'll see the DOM represented in the console as something that looks very much like an HTML document. In Firefox it may look more like a JS object. If you type `document.` you should see a long list of properties and methods of the DOM
 
 ### Step 2 - Selecting elements
 
@@ -37,7 +39,9 @@ We can select these elements of the page in a few different ways:
 
 `document.querySelector('#square')` will also get you the square section. querySelector takes any CSS selector and queries the contents of the DOM. It returns **one** result.
 
-`document.querySelectorAll('.red')` will get you _both_ the elements with the class `red`. They will come back as an array.
+`document.querySelectorAll('.red')` will get you _both_ the elements with the class `red`. They will come back as a NodeList. This looks very similar to an array, but you won't be able to use array methods on it such as `map` and `reduce`. You can access each item using an index, e.g. `myNodeList[0]`, and you can iterate over it using a `for` loop or using `forEach()`.
+
+[NodeList on MDN](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
 
 * How would you select the section with the id of circle?
 * What is returned by `document.querySelectorAll('#square')` ?
@@ -45,15 +49,22 @@ We can select these elements of the page in a few different ways:
 
 ### Step 3 - Changing text content
 
-Although they appear in the Chrome console as HTML elements, DOM nodes are Javascript objects, with many properties and methods.
+Although they appear in the Chrome console visually as HTML elements, DOM nodes are Javascript objects, with many properties and methods.
 
-The `innerText` property contains whatever text is inside the element.
+[What is a Node?](https://www.w3schools.com/js/js_htmldom_navigation.asp)
+
+The `innerText` property of a node contains whatever text is inside the HTML element.
+
+e.g. `<p>this is the innerText of this paragraph element</p>`
 
 We can use `document.getElementById('square').innerText` to get the text inside of the square.
-To change it, we just use `=` to assign a new value
+
+To change it, we just use `=` to assign a new value:
+
 `document.getElementById('square').innerText = 'I love right angles'` will change the text inside the element on the page. Take a look! 👀
 
 * How could you change the text inside the triangle?
+* How could you assign the text inside the circle to a variable? Could you use this variable to change the text too?
 
 ### Step 4 - Adding and removing classes
 
@@ -70,7 +81,8 @@ Take a peek and see how it looks.
 To add the yellow class, we can write:
 `circle.classList.add('yellow')`
 
-* What now would be returned by `document.querySelectorAll('yellow')` ?
+* What now would be returned by `document.querySelectorAll('.yellow')` ?
+* What happens if you add the yellow class before removing the blue class? Why? _Hint: CSS_
 * How would you change the rectangle to appear blue by adding and removing classes?
 
 ## Step 5 - Add event listeners
@@ -79,15 +91,16 @@ To further embed the fun of Javascript interactivity into the DOM, we can add ev
 
 We're going to add a click event listener to the rectangle.
 
-Start by creating a variable to store the rectangle DOM node
+Start by creating a variable to store the rectangle DOM node.
 
-We're going to make a new function that changes the class of the target that is clicked on:
+Next we're going to make a new function that changes the class of the target that is clicked on:
 
 ```
 function changeClass(event) {
 event.target.classList.toggle('bigBorders');
 }
 ```
+[The event object - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Event)
 
 Now we're going to add our new function to an event listener by typing:
 
@@ -96,6 +109,13 @@ Now we're going to add our new function to an event listener by typing:
 ## Step 6 - Directly changing CSS properties
 
 [CSS properties in Javascript](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference) are often written slightly differently than in CSS.
+
+To change the left margin of an element we can use:
+
+```
+var circle = document.querySelector("#circle");
+circle.style.marginLeft = "20px";
+```
 
 Have a read through the above link, then try to target specific elements in the DOM and change their properties. Get creative! 🎨
 
